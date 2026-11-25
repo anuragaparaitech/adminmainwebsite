@@ -25,7 +25,7 @@ const Login = () => {
       toast.success('Login successful!');
       navigate('/dashboard');
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Invalid credentials');
+      toast.error(err.response?.data?.message || (err.message === 'Network Error' ? 'Cannot reach backend server. Please verify backend URL.' : 'Invalid credentials'));
     } finally {
       setLoading(false);
     }
