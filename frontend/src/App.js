@@ -17,6 +17,14 @@ import Platforms from './pages/Platforms/Platforms';
 import PlatformForm from './pages/Platforms/PlatformForm';
 import Collaborations from './pages/Collaborations/Collaborations';
 import CollaborationForm from './pages/Collaborations/CollaborationForm';
+import Dispatch from './pages/Dispatch/Dispatch';
+import DispatchForm from './pages/Dispatch/DispatchForm';
+import About from './pages/About/About';
+import AboutCompanyEdit from './pages/About/AboutCompanyEdit';
+import Team from './pages/About/Team';
+import TeamMemberForm from './pages/About/TeamMemberForm';
+import TermsEdit from './pages/About/TermsEdit';
+import ContactEdit from './pages/About/ContactEdit';
 import Settings from './pages/Settings';
 
 function App() {
@@ -56,6 +64,21 @@ function App() {
             <Route path="collaborations" element={<Collaborations />} />
             <Route path="collaborations/new" element={<CollaborationForm />} />
             <Route path="collaborations/edit/:id" element={<CollaborationForm />} />
+
+            {/* Dispatch Popup */}
+            <Route path="dispatch" element={<Dispatch />} />
+            <Route path="dispatch/new" element={<DispatchForm />} />
+            <Route path="dispatch/edit/:id" element={<DispatchForm />} />
+
+            {/* About Aparaitech */}
+            <Route path="about" element={<About />} />
+            <Route path="about/company" element={<AboutCompanyEdit />} />
+            <Route path="about/principles" element={<AboutCompanyEdit />} />
+            <Route path="about/team" element={<Team />} />
+            <Route path="about/team/new" element={<TeamMemberForm />} />
+            <Route path="about/team/edit/:id" element={<TeamMemberForm />} />
+            <Route path="about/terms" element={<TermsEdit />} />
+            <Route path="about/contact" element={<ContactEdit />} />
 
             {/* Settings */}
             <Route path="settings" element={<Settings />} />

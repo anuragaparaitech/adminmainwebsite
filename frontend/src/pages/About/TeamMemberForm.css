@@ -1,0 +1,89 @@
+/* ── Cover image upload zone ───────────────────────── */
+.cover-upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 40px 24px;
+  cursor: pointer;
+  background: #f8fafc;
+  transition: border-color 0.15s, background 0.15s;
+  text-align: center;
+  max-width: 760px;
+}
+
+.cover-upload-zone:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.cover-upload-icon {
+  font-size: 44px;
+  color: #94a3b8;
+}
+
+.cover-upload-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cover-upload-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Cover preview ─────────────────────────────────── */
+.cover-preview-wrap {
+  position: relative;
+  max-width: 480px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.cover-preview-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.cover-preview-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #2563eb;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+}
+
+.cover-remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cover-remove-btn:hover {
+  background: #ef4444;
+}

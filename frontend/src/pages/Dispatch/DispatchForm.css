@@ -1,0 +1,134 @@
+/* ── Live Preview wrapper ───────────────────────────── */
+.dispatch-preview-wrap {
+  margin-bottom: 0;
+}
+
+.dispatch-preview-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.dispatch-preview {
+  display: flex;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  max-width: 700px;
+  min-height: 220px;
+  border: 1px solid #1e293b;
+}
+
+/* Left dark panel */
+.dp-left {
+  background: #0f172a;
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 16px;
+  position: relative;
+}
+
+.dp-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dp-card-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #1e40af, #2563eb);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.35);
+}
+
+.dp-card-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f1f5f9;
+  text-align: center;
+}
+
+/* Right white popup panel */
+.dp-right {
+  background: #ffffff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dp-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  padding: 0 20px;
+  border-bottom: 1.5px solid #e2e8f0;
+  margin-top: 4px;
+}
+
+.dp-tab {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding: 10px 14px 10px;
+  cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  margin-bottom: -1.5px;
+  transition: color 0.15s;
+}
+
+.dp-tab.active {
+  color: #0f172a;
+  border-bottom-color: #2563eb;
+}
+
+.dp-content {
+  padding: 18px 22px 20px;
+  flex: 1;
+}
+
+.dp-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.dp-desc {
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.dp-cta {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 7px;
+}

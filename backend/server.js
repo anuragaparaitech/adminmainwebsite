@@ -43,6 +43,10 @@ app.use('/api/careers', require('./routes/careers'));
 app.use('/api/services', require('./routes/services'));
 app.use('/api/platforms', require('./routes/platforms'));
 app.use('/api/collaborations', require('./routes/collaborations'));
+app.use('/api/dispatch', require('./routes/dispatch'));
+app.use('/api/about-company', require('./routes/aboutCompany'));
+app.use('/api/team', require('./routes/team'));
+app.use('/api/contact-details', require('./routes/contactDetails'));
 
 app.get('/', (req, res) => res.json({ message: 'API running' }));
 
