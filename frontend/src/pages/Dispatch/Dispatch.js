@@ -63,6 +63,16 @@ const Dispatch = () => {
 
   const handleEdit = (row) => navigate(`/dispatch/edit/${row._id}`);
 
+  const handleToggleStatus = async (row) => {
+    try {
+      await axios.put(`/api/dispatch/${row._id}`, { isActive: !row.isActive });
+      toast.success(`Dispatch tab marked as ${!row.isActive ? 'Active' : 'Inactive'}`);
+      fetchItems();
+    } catch {
+      toast.error('Failed to update status');
+    }
+  };
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/dispatch/${deleteId}`);
@@ -88,6 +98,7 @@ const Dispatch = () => {
         loading={loading}
         onEdit={handleEdit}
         onDelete={(id) => setDeleteId(id)}
+        onToggleStatus={handleToggleStatus}
       />
       <ConfirmModal
         isOpen={!!deleteId}

@@ -35,6 +35,16 @@ const Careers = () => {
 
   const handleEdit = (row) => navigate(`/careers/edit/${row._id}`);
 
+  const handleToggleStatus = async (row) => {
+    try {
+      await axios.put(`/api/careers/${row._id}`, { isActive: !row.isActive });
+      toast.success(`Job marked as ${!row.isActive ? 'Active' : 'Inactive'}`);
+      fetchCareers();
+    } catch {
+      toast.error('Failed to update status');
+    }
+  };
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/careers/${deleteId}`);
@@ -60,6 +70,7 @@ const Careers = () => {
         loading={loading}
         onEdit={handleEdit}
         onDelete={(id) => setDeleteId(id)}
+        onToggleStatus={handleToggleStatus}
       />
       <ConfirmModal
         isOpen={!!deleteId}

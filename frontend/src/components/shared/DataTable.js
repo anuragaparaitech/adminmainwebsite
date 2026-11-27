@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MdEdit, MdDelete, MdSearch, MdCheckCircle, MdCancel } from 'react-icons/md';
 import './DataTable.css';
 
-const DataTable = ({ columns, data, onEdit, onDelete, loading }) => {
+const DataTable = ({ columns, data, onEdit, onDelete, onToggleStatus, loading }) => {
   const [search, setSearch] = useState('');
 
   const filtered = data.filter((row) =>
@@ -64,13 +64,28 @@ const DataTable = ({ columns, data, onEdit, onDelete, loading }) => {
                       {col.render ? (
                         col.render(row[col.key], row)
                       ) : col.type === 'status' ? (
-                        <span className={`badge ${row[col.key] ? 'badge-success' : 'badge-danger'}`}>
-                          {row[col.key] ? (
-                            <><MdCheckCircle /> Active</>
-                          ) : (
-                            <><MdCancel /> Inactive</>
-                          )}
-                        </span>
+                        onToggleStatus ? (
+                          <button
+                            type="button"
+                            onClick={() => onToggleStatus(row)}
+                            title="Click to toggle Active / Inactive"
+                            className={`badge badge-toggle ${row[col.key] ? 'badge-success' : 'badge-danger'}`}
+                          >
+                            {row[col.key] ? (
+                              <><MdCheckCircle /> Active</>
+                            ) : (
+                              <><MdCancel /> Inactive</>
+                            )}
+                          </button>
+                        ) : (
+                          <span className={`badge ${row[col.key] ? 'badge-success' : 'badge-danger'}`}>
+                            {row[col.key] ? (
+                              <><MdCheckCircle /> Active</>
+                            ) : (
+                              <><MdCancel /> Inactive</>
+                            )}
+                          </span>
+                        )
                       ) : (
                         <span className="cell-text">{String(row[col.key] || '-')}</span>
                       )}

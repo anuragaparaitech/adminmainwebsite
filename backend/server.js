@@ -47,6 +47,7 @@ app.use('/api/dispatch', require('./routes/dispatch'));
 app.use('/api/about-company', require('./routes/aboutCompany'));
 app.use('/api/team', require('./routes/team'));
 app.use('/api/contact-details', require('./routes/contactDetails'));
+app.use('/api/site-content', require('./routes/siteContent'));
 
 app.get('/', (req, res) => res.json({ message: 'API running' }));
 

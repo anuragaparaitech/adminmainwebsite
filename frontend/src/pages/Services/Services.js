@@ -34,6 +34,16 @@ const Services = () => {
 
   const handleEdit = (row) => navigate(`/services/edit/${row._id}`);
 
+  const handleToggleStatus = async (row) => {
+    try {
+      await axios.put(`/api/services/${row._id}`, { isActive: !row.isActive });
+      toast.success(`Service marked as ${!row.isActive ? 'Active' : 'Inactive'}`);
+      fetchServices();
+    } catch {
+      toast.error('Failed to update status');
+    }
+  };
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/services/${deleteId}`);
@@ -59,6 +69,7 @@ const Services = () => {
         loading={loading}
         onEdit={handleEdit}
         onDelete={(id) => setDeleteId(id)}
+        onToggleStatus={handleToggleStatus}
       />
       <ConfirmModal
         isOpen={!!deleteId}

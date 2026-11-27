@@ -7,6 +7,10 @@ import {
   MdDevices,
   MdHandshake,
   MdTrendingUp,
+  MdGroups,
+  MdCampaign,
+  MdInfoOutline,
+  MdWeb,
 } from 'react-icons/md';
 import './Dashboard.css';
 
@@ -110,6 +114,10 @@ const Dashboard = () => {
                   { label: 'Add Service', path: '/services/new', icon: <MdBuildCircle />, color: '#0e7490' },
                   { label: 'Add Platform', path: '/platforms/new', icon: <MdDevices />, color: '#065f46' },
                   { label: 'Add Partner', path: '/collaborations/new', icon: <MdHandshake />, color: '#92400e' },
+                  { label: 'About Aparaitech', path: '/about', icon: <MdInfoOutline />, color: '#2563eb' },
+                  { label: 'Our Team Pods', path: '/about/team', icon: <MdGroups />, color: '#059669' },
+                  { label: 'Dispatch Popup', path: '/dispatch', icon: <MdCampaign />, color: '#7c3aed' },
+                  { label: 'Homepage & Sections', path: '/site-content', icon: <MdWeb />, color: '#0891b2' },
                 ].map((action) => (
                   <Link key={action.label} to={action.path} className="quick-action-btn">
                     <span style={{ color: action.color }}>{action.icon}</span>

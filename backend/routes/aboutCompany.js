@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const AboutCompany = require('../models/AboutCompany');
 const { protect } = require('../middleware/auth');
+const { DEFAULT_ABOUT_COMPANY } = require('../utils/seedDefaults');
 
-// GET – returns the single document (creates default if none exists)
 router.get('/', async (req, res) => {
   try {
     let doc = await AboutCompany.findOne();
     if (!doc) {
-      doc = await AboutCompany.create({});
+      doc = await AboutCompany.create(DEFAULT_ABOUT_COMPANY);
     }
     res.json(doc);
   } catch (err) {

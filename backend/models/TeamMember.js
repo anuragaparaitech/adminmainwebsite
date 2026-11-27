@@ -8,6 +8,7 @@ const teamPodSchema = new mongoose.Schema(
     badge: { type: String, default: '' },                      // e.g. "PRINCIPAL SYSTEMS & ENTERPRISE AI ARCHITECTS"
     description: { type: String, required: true },             // paragraph under the card title
     coverImage: { type: String, default: '' },                 // wide cover photo (base64 or URL)
+    tags: [{ type: String }],                                  // skill / focus tags displayed on card footer
     isActive: { type: Boolean, default: true },
     order: { type: Number, default: 0 },
   },

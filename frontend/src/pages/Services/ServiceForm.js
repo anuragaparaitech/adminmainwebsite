@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { MdAdd, MdClose } from 'react-icons/md';
 import PageHeader from '../../components/shared/PageHeader';
+import { resolveImageUrl } from '../../utils/imageUrl';
 import '../Careers/Form.css';
 
 const ServiceForm = () => {
@@ -17,10 +18,13 @@ const ServiceForm = () => {
     slug: '',
     description: '',
     shortDescription: '',
+    heroDescription: '',
+    overview: '',
     icon: 'cloud',
     image: '',
     features: [],
     technologies: [],
+    showOnHomepage: false,
     isActive: true,
     order: 0,
   });
@@ -149,7 +153,7 @@ const ServiceForm = () => {
               {form.image && (
                 <div style={{ marginTop: '12px' }}>
                   <img
-                    src={form.image}
+                    src={resolveImageUrl(form.image)}
                     alt="Preview"
                     style={{ maxHeight: '180px', borderRadius: '8px', border: '1px solid #cbd5e1', objectFit: 'cover' }}
                   />
@@ -162,7 +166,11 @@ const ServiceForm = () => {
               <input name="shortDescription" value={form.shortDescription} onChange={handleChange} placeholder="Brief summary shown on cards" />
             </div>
             <div className="form-group full-width">
-              <label>Full Description *</label>
+              <label>Hero Description</label>
+              <input name="heroDescription" value={form.heroDescription} onChange={handleChange} placeholder="Hero summary shown on the service detail page" />
+            </div>
+            <div className="form-group full-width">
+              <label>Full Description / Overview *</label>
               <textarea name="description" value={form.description} onChange={handleChange} required rows={4} placeholder="Full service description" />
             </div>
           </div>
@@ -213,10 +221,14 @@ const ServiceForm = () => {
         </div>
 
         <div className="form-section">
-          <div className="form-group checkbox-group">
+          <div className="form-group checkbox-group" style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
             <label className="checkbox-label">
               <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} />
               <span>Active (Visible on website)</span>
+            </label>
+            <label className="checkbox-label">
+              <input type="checkbox" name="showOnHomepage" checked={Boolean(form.showOnHomepage)} onChange={handleChange} />
+              <span>Show on Homepage Key Services section</span>
             </label>
           </div>
         </div>

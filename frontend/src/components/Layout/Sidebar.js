@@ -10,6 +10,7 @@ import {
   MdClose,
   MdCampaign,
   MdInfoOutline,
+  MdWeb,
 } from 'react-icons/md';
 import './Sidebar.css';
 
@@ -21,6 +22,7 @@ const navItems = [
   { path: '/collaborations', label: 'Collaborations', icon: <MdHandshake /> },
   { path: '/dispatch',       label: 'Dispatch Popup', icon: <MdCampaign /> },
   { path: '/about',          label: 'About Aparaitech', icon: <MdInfoOutline /> },
+  { path: '/site-content',   label: 'Homepage & Sections', icon: <MdWeb /> },
 ];
 
 const bottomItems = [

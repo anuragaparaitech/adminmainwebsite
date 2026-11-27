@@ -25,6 +25,7 @@ import Team from './pages/About/Team';
 import TeamMemberForm from './pages/About/TeamMemberForm';
 import TermsEdit from './pages/About/TermsEdit';
 import ContactEdit from './pages/About/ContactEdit';
+import SiteContent from './pages/SiteContent/SiteContent';
 import Settings from './pages/Settings';
 
 function App() {
@@ -79,6 +80,9 @@ function App() {
             <Route path="about/team/edit/:id" element={<TeamMemberForm />} />
             <Route path="about/terms" element={<TermsEdit />} />
             <Route path="about/contact" element={<ContactEdit />} />
+
+            {/* Homepage & Sections */}
+            <Route path="site-content" element={<SiteContent />} />
 
             {/* Settings */}
             <Route path="settings" element={<Settings />} />

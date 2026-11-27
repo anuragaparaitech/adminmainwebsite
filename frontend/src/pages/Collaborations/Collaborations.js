@@ -8,8 +8,8 @@ import ConfirmModal from '../../components/shared/ConfirmModal';
 
 const columns = [
   { key: 'partnerName', label: 'Partner Name' },
-  { key: 'type', label: 'Type' },
-  { key: 'website', label: 'Website' },
+  { key: 'category', label: 'Category' },
+  { key: 'date', label: 'Agreement Date' },
   { key: 'order', label: 'Order' },
   { key: 'isActive', label: 'Status', type: 'status' },
 ];
@@ -35,6 +35,16 @@ const Collaborations = () => {
 
   const handleEdit = (row) => navigate(`/collaborations/edit/${row._id}`);
 
+  const handleToggleStatus = async (row) => {
+    try {
+      await axios.put(`/api/collaborations/${row._id}`, { isActive: !row.isActive });
+      toast.success(`Partner marked as ${!row.isActive ? 'Active' : 'Inactive'}`);
+      fetchCollabs();
+    } catch {
+      toast.error('Failed to update status');
+    }
+  };
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/collaborations/${deleteId}`);
@@ -50,7 +60,7 @@ const Collaborations = () => {
     <div>
       <PageHeader
         title="Collaborations"
-        subtitle="Manage company partnerships and collaborations"
+        subtitle="Manage academic MoUs, institutional partnerships, and strategic alliances"
         addPath="/collaborations/new"
         addLabel="Add Partner"
       />
@@ -60,6 +70,7 @@ const Collaborations = () => {
         loading={loading}
         onEdit={handleEdit}
         onDelete={(id) => setDeleteId(id)}
+        onToggleStatus={handleToggleStatus}
       />
       <ConfirmModal
         isOpen={!!deleteId}

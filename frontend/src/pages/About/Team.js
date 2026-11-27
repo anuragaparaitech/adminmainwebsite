@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import PageHeader from '../../components/shared/PageHeader';
 import DataTable from '../../components/shared/DataTable';
 import ConfirmModal from '../../components/shared/ConfirmModal';
+import { resolveImageUrl } from '../../utils/imageUrl';
 
 const columns = [
   {
@@ -13,7 +14,7 @@ const columns = [
     render: (val, row) =>
       val ? (
         <img
-          src={val}
+          src={resolveImageUrl(val)}
           alt={row.name}
           style={{
             width: 72,
@@ -60,6 +61,16 @@ const Team = () => {
 
   const handleEdit = (row) => navigate(`/about/team/edit/${row._id}`);
 
+  const handleToggleStatus = async (row) => {
+    try {
+      await axios.put(`/api/team/${row._id}`, { isActive: !row.isActive });
+      toast.success(`Team pod marked as ${!row.isActive ? 'Active' : 'Inactive'}`);
+      fetchPods();
+    } catch {
+      toast.error('Failed to update status');
+    }
+  };
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/team/${deleteId}`);
@@ -86,6 +97,7 @@ const Team = () => {
         loading={loading}
         onEdit={handleEdit}
         onDelete={(id) => setDeleteId(id)}
+        onToggleStatus={handleToggleStatus}
       />
       <ConfirmModal
         isOpen={!!deleteId}

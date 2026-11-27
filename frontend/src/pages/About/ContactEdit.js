@@ -5,6 +5,7 @@ import PageHeader from '../../components/shared/PageHeader';
 import '../Careers/Form.css';
 
 const EMPTY = {
+  companyLabel: 'Aparaitech Software',
   address: '',
   city: '',
   state: '',
@@ -12,10 +13,17 @@ const EMPTY = {
   postalCode: '',
   phone: '',
   altPhone: '',
+  whatsapp: '',
   email: '',
+  altEmail: '',
+  hrEmail: '',
   supportEmail: '',
   website: '',
+  businessHours: '',
   mapEmbedUrl: '',
+  linkedinUrl: '',
+  instagramUrl: '',
+  youtubeUrl: '',
 };
 
 const ContactEdit = () => {
@@ -54,17 +62,20 @@ const ContactEdit = () => {
     <div>
       <PageHeader
         title="Contact Details"
-        subtitle="Edit official headquarters address, phone numbers and email addresses"
+        subtitle="Edit official headquarters address, phone numbers, email desks, business hours, and social links"
         showBack
       />
       <form onSubmit={handleSubmit} className="form-card">
-        {/* Address */}
         <div className="form-section">
           <h3>Office Address</h3>
           <div className="form-grid">
             <div className="form-group full-width">
+              <label>Office Header / Company Label</label>
+              <input name="companyLabel" value={form.companyLabel} onChange={handleChange} placeholder="Aparaitech Software" />
+            </div>
+            <div className="form-group full-width">
               <label>Street Address</label>
-              <input name="address" value={form.address} onChange={handleChange} placeholder="e.g. 4th Floor, Tech Park, Hinjewadi" />
+              <input name="address" value={form.address} onChange={handleChange} placeholder="Office 122, Gera Imperium, Opposite Wipro Circle, Hinjawadi Phase 2" />
             </div>
             <div className="form-group">
               <label>City</label>
@@ -85,34 +96,66 @@ const ContactEdit = () => {
           </div>
         </div>
 
-        {/* Phone & Email */}
         <div className="form-section">
-          <h3>Phone & Email</h3>
+          <h3>Phone, Email & Hours</h3>
           <div className="form-grid">
             <div className="form-group">
               <label>Primary Phone</label>
-              <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 20 XXXX XXXX" />
+              <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 8261840199" />
+            </div>
+            <div className="form-group">
+              <label>WhatsApp Number</label>
+              <input name="whatsapp" value={form.whatsapp} onChange={handleChange} placeholder="+91 8261840199" />
             </div>
             <div className="form-group">
               <label>Alternate Phone</label>
-              <input name="altPhone" value={form.altPhone} onChange={handleChange} placeholder="+91 98XXXXXXXX" />
+              <input name="altPhone" value={form.altPhone} onChange={handleChange} placeholder="+91 ..." />
             </div>
             <div className="form-group">
-              <label>Primary Email</label>
-              <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="info@aparaitech.com" />
+              <label>General Inquiries Email</label>
+              <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="info@aparaitech.org" />
+            </div>
+            <div className="form-group">
+              <label>Footer Inquiries Email</label>
+              <input type="email" name="altEmail" value={form.altEmail} onChange={handleChange} placeholder="info@ai.aparaitech.org" />
+            </div>
+            <div className="form-group">
+              <label>HR / Careers Email</label>
+              <input type="email" name="hrEmail" value={form.hrEmail} onChange={handleChange} placeholder="hr@info.aparaitech.org" />
             </div>
             <div className="form-group">
               <label>Support Email</label>
-              <input type="email" name="supportEmail" value={form.supportEmail} onChange={handleChange} placeholder="support@aparaitech.com" />
+              <input type="email" name="supportEmail" value={form.supportEmail} onChange={handleChange} placeholder="hr@info.aparaitech.org" />
             </div>
             <div className="form-group">
               <label>Website</label>
-              <input name="website" value={form.website} onChange={handleChange} placeholder="https://aparaitech.com" />
+              <input name="website" value={form.website} onChange={handleChange} placeholder="https://aparaitech.org" />
+            </div>
+            <div className="form-group full-width">
+              <label>Business Hours</label>
+              <input name="businessHours" value={form.businessHours} onChange={handleChange} placeholder="Monday - Friday, 9:30 AM - 6:30 PM IST (Indian Standard Time)" />
             </div>
           </div>
         </div>
 
-        {/* Map */}
+        <div className="form-section">
+          <h3>Social Links</h3>
+          <div className="form-grid">
+            <div className="form-group">
+              <label>LinkedIn URL</label>
+              <input name="linkedinUrl" value={form.linkedinUrl} onChange={handleChange} placeholder="https://www.linkedin.com/company/aparaitech" />
+            </div>
+            <div className="form-group">
+              <label>Instagram URL</label>
+              <input name="instagramUrl" value={form.instagramUrl} onChange={handleChange} placeholder="https://www.instagram.com/aparaitech" />
+            </div>
+            <div className="form-group">
+              <label>YouTube URL</label>
+              <input name="youtubeUrl" value={form.youtubeUrl} onChange={handleChange} placeholder="https://www.youtube.com/@aparaitech" />
+            </div>
+          </div>
+        </div>
+
         <div className="form-section">
           <h3>Google Maps Embed</h3>
           <div className="form-grid">

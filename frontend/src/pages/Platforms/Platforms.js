@@ -35,6 +35,16 @@ const Platforms = () => {
 
   const handleEdit = (row) => navigate(`/platforms/edit/${row._id}`);
 
+  const handleToggleStatus = async (row) => {
+    try {
+      await axios.put(`/api/platforms/${row._id}`, { isActive: !row.isActive });
+      toast.success(`Platform marked as ${!row.isActive ? 'Active' : 'Inactive'}`);
+      fetchPlatforms();
+    } catch {
+      toast.error('Failed to update status');
+    }
+  };
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/platforms/${deleteId}`);
@@ -60,6 +70,7 @@ const Platforms = () => {
         loading={loading}
         onEdit={handleEdit}
         onDelete={(id) => setDeleteId(id)}
+        onToggleStatus={handleToggleStatus}
       />
       <ConfirmModal
         isOpen={!!deleteId}

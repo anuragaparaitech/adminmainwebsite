@@ -16,6 +16,8 @@ const CareerForm = () => {
     department: '',
     location: '',
     type: 'Full-time',
+    experience: '',
+    tags: [],
     description: '',
     requirements: [],
     responsibilities: [],
@@ -23,6 +25,7 @@ const CareerForm = () => {
     isActive: true,
     deadline: '',
   });
+  const [newTag, setNewTag] = useState('');
   const [newReq, setNewReq] = useState('');
   const [newRes, setNewRes] = useState('');
   const [loading, setLoading] = useState(false);
@@ -33,6 +36,9 @@ const CareerForm = () => {
         const d = res.data;
         setForm({
           ...d,
+          tags: d.tags || [],
+          requirements: d.requirements || [],
+          responsibilities: d.responsibilities || [],
           deadline: d.deadline ? d.deadline.split('T')[0] : '',
         });
       }).catch(() => toast.error('Failed to load career'));
@@ -100,19 +106,38 @@ const CareerForm = () => {
             <div className="form-group">
               <label>Job Type</label>
               <select name="type" value={form.type} onChange={handleChange}>
-                {['Full-time', 'Part-time', 'Contract', 'Internship', 'Remote'].map((t) => (
+                {['Full-time', 'Full-Time', 'Part-time', 'Contract', 'Internship', 'Remote'].map((t) => (
                   <option key={t} value={t}>{t}</option>
                 ))}
               </select>
             </div>
             <div className="form-group">
+              <label>Experience Required</label>
+              <input name="experience" value={form.experience} onChange={handleChange} placeholder="e.g. 2 - 5 Years" />
+            </div>
+            <div className="form-group">
               <label>Salary Range</label>
-              <input name="salaryRange" value={form.salaryRange} onChange={handleChange} placeholder="e.g. $80,000 - $120,000" />
+              <input name="salaryRange" value={form.salaryRange} onChange={handleChange} placeholder="e.g. Competitive / Negotiable" />
             </div>
             <div className="form-group">
               <label>Application Deadline</label>
               <input type="date" name="deadline" value={form.deadline} onChange={handleChange} />
             </div>
+          </div>
+        </div>
+
+        <div className="form-section">
+          <h3>Skills / Tech Tags</h3>
+          <div className="tag-input-wrapper">
+            <input value={newTag} onChange={(e) => setNewTag(e.target.value)} placeholder="Add skill tag and press +" onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem('tags', newTag, setNewTag))} />
+            <button type="button" className="tag-add-btn" onClick={() => addItem('tags', newTag, setNewTag)}><MdAdd /></button>
+          </div>
+          <div className="tags-list">
+            {(form.tags || []).map((t, i) => (
+              <span key={i} className="tag">
+                {t} <button type="button" onClick={() => removeItem('tags', i)}><MdClose /></button>
+              </span>
+            ))}
           </div>
         </div>
 
